@@ -1,0 +1,6 @@
+---- acceptor Matches (5 in 2 files) ----
+handle_event in accepter_eh.c (F:\linux-lec\source-code\c10k\Linux_Server_Reactor-master\src\communicate) : 	printf("acceptor_handle_event\n");
+accepter_eh.c (F:\linux-lec\source-code\c10k\Linux_Server_Reactor-master\src\communicate) line 87 : event_handler_t* create_acceptor(int fd, reactor_t* r)
+main in server.c (F:\linux-lec\source-code\c10k\Linux_Server_Reactor-master\src\communicate) :     if (acceptor == NULL)
+main in server.c (F:\linux-lec\source-code\c10k\Linux_Server_Reactor-master\src\communicate) :         printf("acceptor is NULL\n");
+main in server.c (F:\linux-lec\source-code\c10k\Linux_Server_Reactor-master\src\communicate) :     reactor->add_eh(reactor,acceptor);

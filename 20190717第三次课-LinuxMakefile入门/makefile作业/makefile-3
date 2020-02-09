@@ -1,0 +1,92 @@
+telnet_make:cerrexit.o connectsock.o connectTCP.o connectUDP.o dcon.o do_echo.o do_noga.o   \
+do_notsup.o do_txbinary.o errexit.o fsmbuild.o fsminit.o passivesock.o recopt.o scrgetc.o   \
+scrinit.o scrwrap.o sofsm.o sonotsup.o soputc.o sowrite.o status.o subend.o subfsm.o        \
+subopt.o subtermtype.o suspend.o sync.o tclient.o tcout.o telnet.o tnabort.o ttfsm.o ttputc.o \
+ttwrite.o ttysetup.o unscript.o will_notsup.o will_termtype.o will_txbinary.o xput.o
+	gcc cerrexit.o connectsock.o connectTCP.o connectUDP.o dcon.o do_echo.o do_noga.o         \
+do_notsup.o do_txbinary.o errexit.o fsmbuild.o fsminit.o passivesock.o recopt.o scrgetc.o     \
+scrinit.o scrwrap.o sofsm.o sonotsup.o soputc.o sowrite.o status.o subend.o subfsm.o subopt.o   \
+subtermtype.o suspend.o sync.o tclient.o tcout.o telnet.o tnabort.o ttfsm.o ttputc.o ttwrite.o   \
+ttysetup.o unscript.o will_notsup.o will_termtype.o will_txbinary.o xput.o -o telnet_make
+cerrexit.o:cerrexit.c telnet.c
+	gcc cerrexit.c telnet.c -o cerrexit.o
+connectsock.o:connectsock.c
+	gcc connectsock.c -o connectsock.o
+connectTCP.o:connectTCP.c
+	gcc connectTCP.c -o connectTCP.o
+connectUDP.o:connectUDP.c
+	gcc connectUDP.c -o connectUDP.o
+dcon.o:dcon.c
+	gcc dcon.c -o dcon.o
+do_echo.o:do_echo.c
+	gcc do_echo.c -o do_echo.o
+do_noga.o:do_noga.c
+	gcc do_noga.c -o do_noga.o
+do_notsup.o:do_notsup.c
+	gcc do_notsup.c -o do_notsup.o
+do_txbinary.o:do_txbinary.c
+	gcc do_txbinary.c -o do_txbinary.o
+errexit.o:errexit.c
+	gcc errexit.c -o errexit.o
+fsmbuild.o:fsmbuild.c
+	gcc fsmbuild.c -o fsmbuild.o
+fsminit.o:fsminit.c
+	gcc fsminit.c -o fsminit.o
+passivesock.o:passivesock.c fsminit.c do_txbinary.c
+	gcc passivesock.c -o passivesock.o
+recopt.o:recopt.c
+	gcc recopt.c -o recopt.o
+scrgetc.o:scrgetc.c
+	gcc scrgetc.c -o scrgetc.o
+scrinit.o:scrinit.c
+	gcc scrinit.c -o scrinit.o
+scrwrap.o:scrwrap.c
+	gcc scrwrap.c -o scrwrap.o
+sofsm.o:sofsm.c
+	gcc sofsm.c -o sofsm.o
+sonotsup.o:sonotsup.c
+	gcc sonotsup.c -o sonotsup.o
+soputc.o:soputc.c
+	gcc soputc.c -o soputc.o
+sowrite.o:sowrite.c
+	gcc sowrite.c -o sowrite.o
+status.o:status.c
+	gcc status.c -o status.o
+subend.o:subend.c
+	gcc subend.c -o subend.o
+subfsm.o:subfsm.c
+	gcc subfsm.c -o subfsm.o
+subopt.o:subopt.c
+	gcc subopt.c -o subopt.o
+subtermtype.o:subtermtype.c
+	gcc subtermtype.c -o subtermtype.o
+suspend.o:suspend.c
+	gcc suspend.c -o suspend.o
+sync.o:sync.c
+	gcc sync.c -o sync.o
+tclient.o:tclient.c
+	gcc tclient.c -o tclient.o
+tcout.o:tcout.c
+	gcc tcout.c -o tcout.o
+telnet.o:telnet.c connect_TCP.c ttysetup.c fsmbuild.c cync.c cerrexit.c  ttwrite.c sowrite.c
+	gcc telnet.c connect_TCP.c ttysetup.c  fsmbuild.c  cync.c cerrexit.c ttwrite.c sowrite -o \ telnet.o
+tnabort.o:tnabort.c
+	gcc tnabort.c -o tnabort.o
+ttfsm.o:ttfsm.c
+	gcc ttfsm.c -o ttfsm.o
+ttputc.o:ttputc.c
+	gcc ttputc.c -o ttputc.o
+ttwrite.o:ttwrite.c
+	gcc ttwrite.c -o ttwrite.o
+ttysetup.o:ttysetup.c
+	gcc ttysetup.c -o ttysetup.o
+unscript.o:unscript.c
+	gcc unscript.c -o unscript.o
+will_notsup.o:will_notsup.c
+	gcc will_notsup.c -o will_notsup.o
+will_termtype.o:will_termtype.c
+	gcc will_termtype.c -o will_termtype.o
+will_txbinary.o:will_txbinary.c
+	gcc will_txbinary.c -o will_txbinary.o
+xput.o:xput.c
+	gcc xput.c -o xput.o

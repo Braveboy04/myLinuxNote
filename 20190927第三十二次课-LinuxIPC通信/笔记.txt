@@ -1,0 +1,98 @@
+											Linux 进程间通信 
+1. 
+	信号量相关作用与用法
+	消息队列
+	共享内存 
+ipcs：查看当前系统中system V的资源
+
+key值和ID值
+	ID值用来表示某些system v的资源 
+	ipc做了一个约定：在创建某些system v资源时，使用特定的key值作为参数创建
+	key值的创建：ftok()
+	#include <sys/types.h>
+    #include <sys/ipc.h>
+    key_t ftok(const char *pathname, int proj_id);  
+	如果使用相同的文件路径及整数，得到的key值是唯一的
+	唯一的key创建IPC机制时，会得到同一个ipc资源
+	path/INT --->KEY---->ID---->IPC
+	面向对象的方式---->
+
+消息队列：
+	/* Obsolete, used only for backwards compatibility and libc5 compiles */
+		struct msqid_ds {
+			struct ipc_perm msg_perm;   //权限控制
+			struct msg *msg_first;		/* first message on queue,unused  */
+			struct msg *msg_last;		/* last message in queue,unused */
+			__kernel_time_t msg_stime;	/* last msgsnd time */
+			__kernel_time_t msg_rtime;	/* last msgrcv time */
+			__kernel_time_t msg_ctime;	/* last change time */
+			unsigned long  msg_lcbytes;	/* Reuse junk fields for 32 bit */
+			unsigned long  msg_lqbytes;	/* ditto */
+			unsigned short msg_cbytes;	/* current number of bytes on queue */
+			unsigned short msg_qnum;	/* number of messages in queue */
+			unsigned short msg_qbytes;	/* max number of bytes on queue */
+			__kernel_ipc_pid_t msg_lspid;	/* pid of last msgsnd */
+			__kernel_ipc_pid_t msg_lrpid;	/* last receive pid */
+		};
+msgget
+	分配：
+	   #include <sys/types.h>
+       #include <sys/ipc.h>
+       #include <sys/msg.h>
+
+       int msgget(key_t key, int msgflg);
+	   返回代表当前IPC资源msg_queue的ID值
+	   key
+	   msgflg：
+			#define IPC_CREAT  00001000   /* create if key is nonexistent */
+			#define IPC_EXCL   00002000   /* fail if key exists */
+			#define IPC_NOWAIT 00004000   /* return error on wait */
+	设置：
+	   #include <sys/types.h>
+       #include <sys/ipc.h>
+       #include <sys/msg.h>
+
+       int msgctl(int msqid, int cmd, struct msqid_ds *buf);
+	   cmd:控制命令
+			IPC_STAT ：读取消息队列属性，msqid_ds
+			IPC_SET  : 设置消息队列属性
+					   设置权限:
+								uid==ipc.ipc_perm.cuid  ipc资源的创建者
+								root
+			IPC_RMID ：删除消息队列 
+			IPC_INFO ：读取消息队列基本情况 			
+	使用：
+	   #include <sys/types.h>
+       #include <sys/ipc.h>
+       #include <sys/msg.h>
+
+       int msgsnd(int msqid, const void *msgp, size_t msgsz, int msgflg);
+			msgp ： 指向用户定义的数据缓冲区
+			struct msgbuf {
+               long mtype;       /* message type, must be > 0 */
+               char mtext[1];    /* message data */
+           };		
+			
+			msgsz：消息内容长度
+			msgflg：消息队列达到系统定义的最大长度，该怎么办
+			 0 阻塞
+			 IPC_NOWAIT  -1 
+			
+			
+       ssize_t msgrcv(int msqid, void *msgp, size_t msgsz, long msgtyp,
+                      int msgflg);
+			
+		   struct msgbuf {
+               long mtype;       /* message type, must be > 0 */
+               char mtext[1];    /* message data */
+           };
+			
+		msgtyp	
+			msgtyp=0 ：读取第一条消息
+			msgtyp>0 :第一条msgtype类型的消息
+			msgtyp<0 :接收第一条最低类型
+			
+			
+			#define  MSG_PRI 100
+			
+			msgtyp =-5

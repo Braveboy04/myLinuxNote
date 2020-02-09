@@ -1,0 +1,123 @@
+							SSL编程与SSL介绍 与 网络安全
+https://套接字进行数据加密 			
+HTTPS=SSL+HTTP
+
+SSL：安全套接字 ----->数据加密
+      加密机制    
+	 openssl 应用库
+加密API
+HTTPS API
+	 
+openssl------https服务器设计
+openssl 加密方法 
+https中利用openssl加密的方式 
+
+客户端 公钥 私钥  证书 
+服务端 公钥  私钥  证书 			利用openssl工具进行生成
+CA     私钥  证书 数字签名 
+
+文件 index serial  key  csr----签发----cert 
+
+https协议分析  
+http+ssl 
+
+加密套件
+对称加密：AES  DES 
+非对称加密：RSA... 
+单项加密 MD5 SHA
+AES 
+DES 
+RSA 
+MD5 
+SHA 
+
+https 编程
+建立TCP连接 
+ssl初始化
+
+001  。。。错误
+002  。。。错误 
+003  。。。错误 
+
+
+建立socket和ssl绑定后 
+进行ssl_accept
+ssl展示----信息
+
+
+openssl ca -config openssl_root_ca.cnf -extensions intermediate_ca -days 3650
+ -notext -md sha256 
+ -in ../intermediate/csr/intermediate_ca.csr.pem 
+ -out ../intermediate/cert/intermediate_ca.cert.pem 	 
+	 
+openssl ca -config openssl_root_ca.cnf -extensions server_cert \
+-days 365 -notext -md sha256 \
+-in ../server/server.csr.pem \
+-out ../server/server.cert.pem 
+
+8080 
+8080----80
+
+8443
+8443------443
+
+RC4----解密方式 
+全文解密 
+4K ---一次加密 
+1.5+1.5+1K  解密 
+	 
+对称加密
+		对称加密的密钥是一致的
+		AES DES 
+		优点：速度较快 ----->做通信数据加密
+		缺点：密钥是一致的--->加密端要把密钥 传输给解密端
+非对称加密
+		有公钥和私钥
+		RSA
+		优点：有公钥和私钥 ------>密码加密  身份验证
+		缺点：解密速度慢  -------->一般做密钥加密
+单项加密  crc校验 哈希值
+		自加密 ----雪崩效应
+		md5 sha 
+		做数据校验
+
+数字签名
+
+建立TCP 
+证书的发送和确认
+https的数据加密 发送
+
+
+ssl_close(ssl)
+close（socket）
+
+openssl库来生成私钥 公钥 证书 
+
+
+服务器和客户端的CA一定相同 
+
+私钥：
+公钥+.key+随机数---->私钥
+
+		
+SSL通信中的加密机制
+  公钥加密 私钥解密
+  openssl
+
+  SSL的通信协议
+  
+  设计HTTPS的服务器
+  SSL+HTTP
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  

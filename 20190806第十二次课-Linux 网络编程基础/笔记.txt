@@ -1,0 +1,66 @@
+1. mac  ip  tcp/UDP
+  MAC--链路连接问题---》物理连接问题
+  IP -- 解决网络传输问题
+  TCP UDP 进程
+  应用层：数据逻辑处理---业务逻辑
+ 
+socket--->
+		TCP RFC
+		tcp/IP详解 卷1 2 3 4 
+		Linux的TCP源码
+
+Linux 网络编程
+  1.socket 编程--->层次之间的关系
+  2.高并发高负载服务器开发（C10K）
+	 2.1 IO通信模块
+		 同步IO
+		 异步IO
+		 阻塞IO
+		 非阻塞IO
+		 IO复用 
+	 2.2 数据处理
+		  文件操作
+		  Linux多进程
+			 IPC
+				posix 
+					pipe
+					fifo
+					signal
+				system V
+					msgqueue
+					memory share
+					sem
+		   Linux多线程
+				互斥
+					PV操作
+				同步 
+		  多进程多线程
+			  线程池
+	 2.3 高并发服务器模型
+			reactor
+			proctor
+ 3.不同协议服务实现
+	  应用层：
+			http https ssh telnet p2p
+			ftp  
+	  原始套接字：
+			icmp sctp ospf mpls rip pppoe 
+
+			
+物理层：数据物理传输 PCS+PMA 
+链路层：局域网的连通问题 MAC header    src mac  dest mac l/t 
+		pppoe arp(arp欺骗 arp嗅探)
+网络层：网络传输	src ip  dest ip 
+		路由协议 nat协议 icmp   
+传输层：进程数据传输问题  src port dest port   type
+		80 443 22 21 23 3306 998 1702 ..
+		
+会话层：session 
+表示层：socket
+应用层：逻辑数据处理 http ftp 		
+
+
+
+6:10
+ 
+ 

@@ -1,0 +1,4 @@
+---- tp_manage_thread Matches (3 in 1 files) ----
+Pthread_pool.c (f:\linux-lec\ДњТы\pthread\pthread_pool-master):static void *tp_manage_thread(void *pthread);
+Pthread_pool.c (f:\linux-lec\ДњТы\pthread\pthread_pool-master):	err = pthread_create(&this->manage_thread_id, NULL, tp_manage_thread, this);
+Pthread_pool.c (f:\linux-lec\ДњТы\pthread\pthread_pool-master):void *tp_manage_thread(void *pool_this){

@@ -1,0 +1,4 @@
+---- thrpool.queue_avail_cond Matches (3 in 1 files) ----
+Tpool.c (f:\linux-lec\ДњТы\thread_pool_server\linux_threadpool_skeleton-master):	pthread_cond_init(&thrpool.queue_avail_cond, NULL);
+Tpool.c (f:\linux-lec\ДњТы\thread_pool_server\linux_threadpool_skeleton-master):	pthread_cond_signal(&thrpool.queue_avail_cond);
+Tpool.c (f:\linux-lec\ДњТы\thread_pool_server\linux_threadpool_skeleton-master):			pthread_cond_wait(&thrpool.queue_avail_cond, &thrpool.queue_avail_mtx);

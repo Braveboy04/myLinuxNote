@@ -1,0 +1,84 @@
+1.修改警告屏蔽，取消对头文件的检查
+-wlib(0) 不生成任何库信息
+-wlib(1) 只生成错误信息（当处理库的源代码时）
+-wlib(2) 生成错误和告警信息
+-wlib(3) 生成错误、告警和其它信息（这是默认设置）
+-wlib(4) 产生所有信息
+
+2.修改
+这错误是因为在std.lnt中设置的包好选项中没有办好这个头文件的文件夹路径
+/user/include
+
+							   Linux的网络编程 Socket
+http  ---> 路由劫持
+	路由器内设置代码 
+	Linux 内核
+1.服务器
+	1.完成功能
+	2.集成服务器  --  
+	3.高性能服务器
+	4.功能服务器  http https telnet ssh  ftp ...
+2.Linux的网络安全
+	socket raw
+3.网络程序的结构设计
+
+
+base:
+socket(AF_INET,SOCK_STREAM,0);
+AF_INET    ipV4
+AF_INET6   IPV6
+套接字类型
+流套接字 TCP
+数据报套接字  UDP
+原始套接字  RAW 可以自行进行协议设计等
+
+htons ：本地字节序 转网络字节序
+inet_addr： 把“192.168.1.1”----int 地址
+accept  ：阻塞函数
+linux 服务器  
+windows客户端
+协议 ----tcp
+IIS6.0
+业务逻辑---由服务器来中转
+
+服务程序的组成：
+  1.IO通信单元
+	数据通信， IO读写
+	
+	  1.端口复用
+		select    1000  
+		poll
+		epoll     30w		
+	  2.同步
+	    http 协议--->web  https=http+ssl
+	  3.异步
+		信号
+		signal
+		sigaction
+	  4.异步IO
+		 C10K
+		 read write -----》aio_read  aio_write		 
+		 
+  2.数据处理单元
+	 多线程 
+		线程的互斥  mutex spin  atomic
+		线程的同步  PV sem
+		线程的数据通信
+	 多进程--chrome
+		IPC 进程间通信 pipe fifo socketpair ...
+	 多线程+多进程---chrome
+		线程池
+		进程池  
+  3.数据存储单元
+
+结构性
+	2种高性能服务器结构
+	
+
+
+
+
+
+
+
+

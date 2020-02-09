@@ -1,0 +1,69 @@
+Linux中的程序设计思路
+分离分层
+底层对上层是透明的
+一、宏观层次：
+	应用层+内核层
+	应用层：库的编程 前台界面  部分网络编程（框架 socket SSL）
+			socket   bind  listen accept fork...  操作fd
+			fd=open("name",mode,flags)  fd  read(fd)  write(fd)     int fd
+	内核层：监控程序 管理文件  内核级网络编程(netlink netfilter ipsec infobind 邻接子系统)
+			struct file[fd];
+	
+	文件监控：execve fork word--->子程序
+			  系统调用 int 2e    systementer  
+			  
+			  fork()	 execve()
+			  sys_fork() sys_execve() HOOK 替换系统调用
+			  
+			 
+			 
+二、软件设计分层.
+	  基于HTTPS的网页认证模块    http://www.baidu.com  https://www.baidu.com 
+	底层向上层提供接口  上层只需要调用接口不去管底层的具体实现
+	每一层都有自己的核心层，核心层的功能管理层中的实现模块，并向上提供接口
+	1.创建层通用结构体：
+	#define OPENSSL  1
+	#define APACHE  1
+	#define TinySSL  1
+
+	struct https_oop{
+		enum type t;
+		int  version;
+		int(*send)(char * buf ,int leng);
+		int(*rcv)(char * buf ,int leng);
+		int(*connect)(char * buf ,int leng);
+		int(*accept)(char * buf ,int leng);
+		.
+		.
+	};
+	
+	enum type{
+	   OPENSSL;
+	   APACHE;
+	   TinySSL;
+	
+	};
+	2.创建层链表管理函数
+		
+	struct https_oop 当成一个链表节点
+	创建一个节点为struct https_oop的链表
+	设计增删改查函数
+	https_fun_add() 增加节点
+	https_func_del() 删除节点
+	https_func_mdl() 修改节点
+	https_func_seek(int type)遍历查询
+	
+	3.构建该层
+	 3.1 创建一个层结构体节点
+	 3.2 根据该节点属性设置该节点
+			t=OPENSSL
+			send = openssl_send
+			read = openssl_read
+			connect=openssl_connect
+	 3.3 调用层链表增加节点函数，向链表添加节点
+			https_fun_add(&P1);
+			
+	socket网络编程基础
+	多线程网络编程
+	高性能服务器设计框架
+	

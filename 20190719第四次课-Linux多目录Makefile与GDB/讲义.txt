@@ -1,0 +1,150 @@
+man  在线帮助命令  退出用q
+-help  --help 
+gdb -help 
+	
+
+						Linux GDB调试
+GDB linux 中的debug工具
+VC VS 
+断点调试   单步  步入  步出 
+跳到下一断点
+内存  寄存器  stack  反编译  内存断点 
+变量   线程堆栈  
+
+GDB 调试时修改内存 
+flag =90
+if(flag ==100)
+  A
+else 
+  B
+  
+if(!strcmp(passwd,key))
+a
+else 
+b
+
+gdb 
+命令行的调试工具
+break 
+
+如果你的程序想要用gdb调试 
+gcc -g -o test-1  test-1.c
+
+开启gdb的方法
+gdb  test-1 
+gdb  attach pid 
+gdb  test-1 core   
+
+list  l 
+set listsize 20
+l test-1.c:10 
+l test-1.c:main 
+
+focus 
+layout
+
+quit
+
+break  b 
+b 20     b test-1.c:20
+b func  
+info breakpoint 
+
+run  r 
+layout 
+
+step  s 步入 
+gdb支持命令重复 
+
+next  n 步出 
+
+
+能够一次跳出循环
+until  u 
+
+如果清除一个断点
+disable breakpoint 1
+clean 
+enable breakpoint 1 
+
+
+跳转到下一个断点
+continue   c 
+
+main
+  fun1 
+  fun2 
+  
+  
+fun1 
+	fun3 
+	
+fun3 
+  fun4 
+
+bt 
+
+结束当前函数
+finish  f 
+
+查看变量值 
+info local result 
+::
+info local file::result  全局
+info local function::result  局部
+
+
+查看寄存器值
+info registers eax 
+eax ebc 
+
+GDB传入参数
+set args 10 20 30 40 50
+./test-1 10 20 30 40 50
+
+设置运行路径
+path /work 
+
+gdb中如何运行shell命令
+shell  +command
+
+二进制指令跟踪 
+setpi 
+nexti
+display/i $pc  自动化显示二进制运行的方式
+
+查看某个地址的内存
+x 格式  地址
+/8ub
+8:显示8个
+u:无符号十进制显示
+b:byte  h：half word 
+w：word
+
+
+如何查看数组的内容
+int a[10];
+char a[10]
+p *array@len  
+p *a@10 
+
+x /10dw a
+x /10cb a
+
+
+
+查看栈信息的命令 
+frame n 
+info frame n  打印详细的栈信息
+ info args	
+  info locals 
+
+  
+GDB的特殊用法
+watch 
+monitor 
+print 
+catch
+
+
+
